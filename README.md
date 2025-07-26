@@ -66,6 +66,31 @@ Writing row data to row based and column based binray -
 
 
 
+- Flat files - very very hard to parse and comprehend (TXT, CSV)
+- Semi-structured files - very easy to parse and comprehend. (JSOn,XML)
+- Structured files - efficient storage and fast access. (Avro, Parquet)
+
+- column pruning and projection pushdown are fancy terms for saying that we can read only the columns we need and not the entire file.
+
+
+
+Lot of files containing Logs
+
+UseCase -     
+All the number occures where my network failed in last 2 weeks.
+Engineering query -> Select count(*) from logs where level = 'SEVERE' and timestamp >= '2023-01-01' and timestamp < '2023-01-15';
+
+Current Files = 
+
+Petabytes of CSV files containing logs.
+
+3 issues
+1) Row by Row Processing.
+2) Schema Evolution, (Very hard to readers to understand and parse the schmee)
+3) Compression and Encoding
+
+
+COL1, COL2, COL3, SEVERE, R2, COL1, COL2, COL3, SEVERE
 
 
 
